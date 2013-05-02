@@ -1,0 +1,68 @@
+﻿@model MvcSimple.Models.LoginModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/Scripts/jquery-1.4.4.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <link href="~/Content/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body style="padding: 10px">
+    <div>
+        @using (Html.BeginForm())
+        {         
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <fieldset>
+                <!-- Form Name -->
+                <legend>Login</legend>
+
+                <!-- Text input-->
+                <div class="control-group">
+                    <label class="control-label">@Html.LabelFor(m => m.UserName)</label>
+                    <div class="controls">
+                        @Html.TextBoxFor(m => m.UserName)
+                        <p class="help-block">@Html.ValidationMessageFor(m => m.UserName)</p>
+                    </div>
+                </div>
+
+                <!-- Password input-->
+                <div class="control-group">
+                    <label class="control-label">@Html.LabelFor(m => m.Password)</label>
+                    <div class="controls">
+                        @Html.PasswordFor(m => m.Password)
+                        <p class="help-block">@Html.ValidationMessageFor(m => m.Password)</p>
+                    </div>
+                </div>
+
+
+                <div class="control-group">
+                    <label class="control-label"></label>
+                    <div class="controls">
+                        <label class="checkbox">
+                            <input type="checkbox" name="checkboxes" value="Option one">
+                            @Html.CheckBoxFor(m => m.RememberMe) Remember Me
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Button -->
+                <div class="control-group">
+                    <div class="controls">
+                        <button id="Log In" name="Log In" class="btn btn-primary">Log In</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        }
+    </div>
+</body>
+</html>
